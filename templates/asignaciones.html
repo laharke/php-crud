@@ -1,0 +1,29 @@
+
+
+  <script async src="includes/js/asignaciones.js"></script>
+ 
+    <center>
+      <div id="body">
+        Bienvenido a asigancioens.
+       </div>
+     </center>
+     <div id="clientesDropdownDiv" class="d-flex justify-content-center" >
+      Seleccione un cliente:
+      <select id="clientesDropdown" name="clientesDropdown">
+        <!-- aca tendria el for each para los clientes
+        PERO EL VALUE TIENE QUE SER EL ID ASI DSP MADNO ESO y el anme EL NAME MAS APELLIDO-->
+        <option value="" selected disabled hidden>Seleccione el cliente</option>
+        {{foreach from=$clientes item=cliente}}
+          <option value="{{$cliente.id}}">{{$cliente.fullname}}</option>
+        {{/foreach}}
+      </select>
+   
+
+     </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" onclick="getServicios()">Buscar</button>
+    </div>
+
+    <div id="serviceListAsignaciones">
+
+    </div>

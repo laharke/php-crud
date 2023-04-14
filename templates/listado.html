@@ -1,0 +1,79 @@
+
+{{if $listadoNeeded == 'clientes'}}
+
+<div class="container">
+<table id="myTable" class="table table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Dirección</th>
+        <th>Telefonico</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+    </tr>
+    <!-- 
+        Ya tengo el Cuerpo de la tabla, ahora debo crear dinamicametne el resto Con un for each en smarty, aca le voy a enviar la data.
+        Para acceder al array con smarty es {{$users[1].name}}
+        A esto le deberia hacer un for each asique accedo mas facil
+    -->
+    {{foreach from=$users item=user}}
+        <tr id="{{$user.id}}" >
+            <td>{{$user.id}}</td>
+            <td>{{$user.name}}</td>
+            <td>{{$user.apellido}}</td>
+            <td>{{$user.dir}}</td>
+            <td>{{$user.tel}}</td>
+            <td class="centerDiv"><button data-id="{{$user.id}}"  class="editButton btn btn-light btn-sm" onclick="editUser('{{$user.id}}')">Edit</button></td>
+            <td class="centerDiv"><button data-id="{{$user.id}}"  class="deleteButton btn btn-danger btn-sm" onclick="deleteUser('{{$user.id}}')">Borrar</button></td>
+        </tr>
+    {{/foreach}}
+
+
+  </table>
+<div class="centerDiv">
+  <input type="button" id="hideListButton" class="btn btn-info" value="Hide List" onclick="hideList()">
+</div>
+
+</div>
+
+{{/if}}
+
+
+{{if $listadoNeeded == 'servicios'}}
+
+<div class="container">
+<table id="myTable" class="table table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>V Descarga</th>
+        <th>V Subida</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+    </tr>
+    <!-- 
+        Ya tengo el Cuerpo de la tabla, ahora debo crear dinamicametne el resto Con un for each en smarty, aca le voy a enviar la data.
+        Para acceder al array con smarty es {{$users[1].name}}
+        A esto le deberia hacer un for each asique accedo mas facil
+    -->
+    {{foreach from=$servicios item=servicio}}
+        <tr id="{{$servicio.id}}" >
+            <td>{{$servicio.id}}</td>
+            <td>{{$servicio.name}}</td>
+            <td>{{$servicio.vdescarga}}</td>
+            <td>{{$servicio.vsubida}}</td>
+            <td class="centerDiv"><button data-id="{{$servicio.id}}"  class="editButton btn btn-light btn-sm" onclick="editServiceInfo('{{$servicio.id}}')">Edit</button></td>
+            <td class="centerDiv"><button data-id="{{$servicio.id}}"  class="deleteButton btn btn-danger btn-sm" onclick="deleteService('{{$servicio.id}}')">Borrar</button></td>
+        </tr>
+    {{/foreach}}
+
+
+  </table>
+<div class="centerDiv">
+  <input type="button" id="hideListButton" class="btn btn-info" value="Hide List" onclick="hideList()">
+</div>
+
+</div>
+
+{{/if}}

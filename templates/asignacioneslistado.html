@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+        <h3>Servicios asignados al cliente:</h3>
+</div>
+
+<input type="hidden" value="{{$clienteId}}" id="clienteIdHidden">
+<div class="container">
+    <table id="myTable" class="table table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>V Descarga</th>
+            <th>V Subida</th>
+            <th>Borrar de usuario</th>
+        </tr>
+        <!-- 
+            Ya tengo el Cuerpo de la tabla, ahora debo crear dinamicametne el resto Con un for each en smarty, aca le voy a enviar la data.
+            Para acceder al array con smarty es {{$users[1].name}}
+            A esto le deberia hacer un for each asique accedo mas facil
+        -->
+        {{foreach from=$servicios item=servicio}}
+            <tr id="{{$servicio.idServicio}}" >
+                <td>{{$servicio.idServicio}}</td>
+                <td>{{$servicio.nameServicio}}</td>
+                <td>{{$servicio.vdescarga}}</td>
+                <td>{{$servicio.vsubida}}</td>
+                <td class="centerDiv"><button data-id="{{$servicio.id}}" data-clienteId="{{$clienteId}}" class="deleteButton btn btn-danger btn-sm" onclick="toogleServicio('{{$servicio.idServicio}}','{{$clienteId}}', 'desasignar')">Desasignar</button></td>
+            </tr>
+        {{/foreach}}
+    
+      </table>
+    
+    </div>
+
+<div class="d-flex justify-content-center">
+        <h3>Servicios <b>NO</b> asignados al cliente:</h3>
+</div>
+<div class="container">
+    <table id="myTable" class="table table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>V Descarga</th>
+            <th>V Subida</th>
+            <th>Asignar a usuario</th>
+        </tr>
+        <!-- 
+        -->
+        {{foreach from=$serviciosFaltantes item=servicio}}
+            <tr id="{{$servicio.idServicio}}" >
+                <td>{{$servicio.idServicio}}</td>
+                <td>{{$servicio.nameServicio}}</td>
+                <td>{{$servicio.vdescarga}}</td>
+                <td>{{$servicio.vsubida}}</td>
+                <td class="centerDiv"><button data-id="{{$servicio.id}}" data-clienteId="{{$clienteId}}" class="deleteButton btn btn-danger btn-sm"  onclick="toogleServicio('{{$servicio.idServicio}}','{{$clienteId}}', 'asignar')">Asignar</button></td>
+            </tr>
+        {{/foreach}}
+    
+    
+      </table>
+    
+    </div>
